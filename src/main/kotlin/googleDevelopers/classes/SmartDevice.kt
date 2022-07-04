@@ -18,6 +18,10 @@ open class SmartDevice(val name: String, val category: String) {
         }
     }
 
+    fun printDeviceInfo() {
+        println("device name: $name, category : $category, type : $deviceType")
+    }
+
     open fun turnOn() {
         println("Smart device is turned on.")
     }
@@ -50,8 +54,18 @@ class SmartTvDevice(tvName: String, tvCategory: String) : SmartDevice(name = tvN
         println("Increased volume to $speakerVolume")
     }
 
+    fun decreaseVolume() {
+        speakerVolume--
+        println("Increased volume to $speakerVolume")
+    }
+
     fun nextChannel() {
         channelNumber++
+        println("Channel increased to $channelNumber")
+    }
+
+    fun previousChannel() {
+        channelNumber--
         println("Channel increased to $channelNumber")
     }
 }
@@ -79,6 +93,11 @@ class SmartLightDevice(lightName: String, lightCat: String) :
         brightnessLevel++
         println("Brightness increased to $brightnessLevel")
     }
+
+    fun decreaseBrightness() {
+        brightnessLevel--
+        println("Brightness increased to $brightnessLevel")
+    }
 }
 
 //  Smart home has a smart tv, and a smart light
@@ -101,8 +120,16 @@ class SmartHome(val smartTvDevice: SmartTvDevice, val smartLightDevice: SmartLig
         smartTvDevice.increaseVolume()
     }
 
+    fun decreaseTvVolume() {
+        smartTvDevice.decreaseVolume()
+    }
+
     fun changeChannelToNext() {
         smartTvDevice.nextChannel()
+    }
+
+    fun changeChannelToPrevious() {
+        smartTvDevice.previousChannel()
     }
 
     fun turnOnLight() {
@@ -115,6 +142,18 @@ class SmartHome(val smartTvDevice: SmartTvDevice, val smartLightDevice: SmartLig
 
     fun increaseLightBrightness() {
         smartLightDevice.increaseBrightness()
+    }
+
+    fun decreaseLightBrightness() {
+        smartLightDevice.decreaseBrightness()
+    }
+
+    fun printSmartTvInfo() {
+        smartTvDevice.printDeviceInfo()
+    }
+
+    fun printSmartLightInfo() {
+        smartLightDevice.printDeviceInfo()
     }
 
     fun turnOnAllDevices() {
